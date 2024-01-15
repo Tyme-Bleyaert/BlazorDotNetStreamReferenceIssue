@@ -1,0 +1,49 @@
+﻿@page "/"
+@inject IJSRuntime JsRuntime;
+@inject IWebHostEnvironment HostEnvironment;
+<PageTitle>Index</PageTitle>
+
+On after render and every 3 seconds we will create image in java-script.
+If you wait at least 30 seconds you will get an exception.
+
+@code{
+    private Timer? t_timer;
+    private IJSObjectReference? _moduleRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _moduleRef = await JsRuntime.InvokeAsync<IJSObjectReference>("import", "./scripts/reusableImage.js");
+            t_timer = new Timer(TimerCallback);
+            t_timer.Change(3000, 3000);
+            await SetImageThroughJavaScript();
+        }
+    } 
+
+    private void TimerCallback(object? state)
+    {
+        _ = SetImageThroughJavaScript();
+    }
+
+    private async Task SetImageThroughJavaScript()
+    {
+
+        if(_moduleRef is not null)
+        {
+            try
+            {
+                var imagePath = HostEnvironment.WebRootPath + @"\img\GitHub_Logo.png";
+                var fileInfo = new FileInfo(imagePath);
+                var fileStream = fileInfo.OpenRead();
+                using var streamRef = new DotNetStreamReference(fileStream);
+                await _moduleRef.InvokeVoidAsync("setImage", streamRef, fileInfo.Name, @"image/png");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"exception was thrown while trying to create the image : {ex}");
+            }
+        }
+    }
+}

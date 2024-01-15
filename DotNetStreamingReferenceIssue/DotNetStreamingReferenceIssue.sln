@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34407.89
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetStreamingReferenceIssue", "DotNetStreamingReferenceIssue\DotNetStreamingReferenceIssue.csproj", "{454FBB5C-0B29-40FD-933F-1CB25966C505}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{454FBB5C-0B29-40FD-933F-1CB25966C505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{454FBB5C-0B29-40FD-933F-1CB25966C505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{454FBB5C-0B29-40FD-933F-1CB25966C505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{454FBB5C-0B29-40FD-933F-1CB25966C505}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D3BA9C1-08E7-47EF-9CC9-8A63F61B4DBD}
+	EndGlobalSection
+EndGlobal
